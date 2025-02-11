@@ -21,4 +21,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// 一覧画面
 Route::get('/todo', 'TodoController@index');
+
+// 新規作成画面
+Route::get('/todo/create', 'TodoController@create');

@@ -7,6 +7,7 @@ use App\Todo;
 
 class TodoController extends Controller
 {
+    // 一覧表示
     public function index()
     {
         // TodoModelをインスタンス化
@@ -23,5 +24,11 @@ class TodoController extends Controller
         // view関数の第一引数：表示させたいBladeファイル
         // view関数の第二引数：Bladeファイルに渡したいデータの連想配列（[blade内での変数名 => 代入したい値]）
         // 「resources/views/から対象の*.blade.phpまでの相対パスを.区切りで指定」します。
+    }
+
+    // 新規作成
+    public function create()
+    {
+        return view('todo.create');
     }
 }
