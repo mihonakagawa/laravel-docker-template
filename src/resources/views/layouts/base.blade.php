@@ -26,6 +26,7 @@
     </nav>
     <main class="py-4">
       <div class="container">
+        <!-- ここに子bladeの内容が入る -->
         @yield('content')
       </div>
     </main>
