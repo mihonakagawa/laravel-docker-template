@@ -1,5 +1,5 @@
-@extends('layouts.base') <!-- 継承する親Bladeを指定 -->
-@section('content') <!-- 継承する親Bladeの@yield()との紐付け -->
+@extends('layouts.base')
+@section('content')
   <div class="row justify-content-center">
     <div class="col-md-8">
       <div class="card">
