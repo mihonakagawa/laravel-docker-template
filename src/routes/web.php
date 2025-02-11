@@ -11,6 +11,16 @@
 |
 */
 
+
+// routes/web.phpは、ルート定義用のファイル。
+
+// ルート定義とは？
+// URIとHTTPメソッドの組み合わせで実行する処理を指定すること。
+
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/todo', function () {
+    echo 'Hello World!';
 });
