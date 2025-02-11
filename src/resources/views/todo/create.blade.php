@@ -5,7 +5,10 @@
       <div class="card">
         <div class="card-header">ToDo作成</div>
         <div class="card-body">
-          <form method="" action="">
+          <form method="post" action="{{ route('todo.store') }}">
+            @csrf
+            <!-- CSRF対策のためのトークンが含まれたinputタグを生成 -->
+            <!-- この状態でフォームを送信することで、CSRF対策のトークンも一緒に送信され、Laravel側でトークンの検証も自動的に行ってくれる -->
             <div class="form-group row">
               <label for="name" class="col-md-4 col-form-label text-md-right">ToDo入力</label>
               <div class="col-md-6">

@@ -21,12 +21,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// 一覧画面
-Route::get('/todo', 'TodoController@index');
+// 一覧画面の表示のルート
+Route::get('/todo', 'TodoController@index')->name('todo.index');
 
-// 新規作成画面
-// Route::get('/todo/create', 'TodoController@create');
+// 新規作成画面の表示のルート
 Route::get('/todo/create', 'TodoController@create')->name('todo.create');
 // 名前付きルート: ->name('ルート名')
 // route('ルート名')とすることで、ルート名からそのルートで設定したURLを生成できる。
 // bladeファイルのhtml内で、href="{{ route('todo.create') }}などと指定できる。
+
+// 新規作成処理のルート
+Route::post('/todo', 'TodoController@store')->name('todo.store');
