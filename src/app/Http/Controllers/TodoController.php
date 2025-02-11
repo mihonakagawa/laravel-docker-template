@@ -18,8 +18,10 @@ class TodoController extends Controller
         // CollectionインスタンスはLaravelで用意されているクラスで配列操作に特化したクラス
         
         // view関数で、画面表示したいHTMLを指定
-        return view('todo.index');
-        // view関数の引数：表示させたいBladeファイル
+
+        return view('todo.index', ['todos' => $todos]);
+        // view関数の第一引数：表示させたいBladeファイル
+        // view関数の第二引数：Bladeファイルに渡したいデータの連想配列（[blade内での変数名 => 代入したい値]）
         // 「resources/views/から対象の*.blade.phpまでの相対パスを.区切りで指定」します。
     }
 }
