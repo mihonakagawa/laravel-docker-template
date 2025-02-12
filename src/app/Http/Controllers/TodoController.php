@@ -7,7 +7,7 @@ use App\Todo;
 
 class TodoController extends Controller
 {
-    // 一覧表示の表示
+    // 一覧画面の表示
     public function index()
     {
         // TodoModelをインスタンス化
@@ -54,7 +54,18 @@ class TodoController extends Controller
         // 3. Todoインスタンスの`->save()`を実行してオブジェクトの状態をDBに保存するINSERT文を実行
         $todo->save();
 
-        // 一覧画面へリダイレクト
+        // 一覧画面を表示
         return redirect()->route('todo.index');
+    }
+
+    // 詳細画面の表示
+    public function show($id)
+    {
+        $model = new Todo();
+        // find()メソッド：指定のIDのデータを取得
+        $todo = $model->find($id);
+
+        // 詳細画面を表示
+        return view('todo.show', ['todo' => $todo]);
     }
 }

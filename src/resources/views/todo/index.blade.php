@@ -13,6 +13,8 @@
           @foreach ($todos as $todo)
             <div class="d-flex align-items-center p-2">
               <span class="col-9">{{ $todo->content }}</span>
+              <!-- route()の第二引数には、ルートパラメータを指定 -->
+              <a href="{{ route('todo.show', $todo->id) }}" class="btn btn-info ml-3">詳細</a>
             </div>
           @endforeach
         </div>

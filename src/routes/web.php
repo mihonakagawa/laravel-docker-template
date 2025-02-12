@@ -32,3 +32,8 @@ Route::get('/todo/create', 'TodoController@create')->name('todo.create');
 
 // 新規作成処理のルート
 Route::post('/todo', 'TodoController@store')->name('todo.store');
+
+// 詳細画面の表示のルート
+Route::get('/todo/{id}', 'TodoController@show')->name('todo.show');
+// {id}の部分は、変数を読み込んでいる。
+// /todo/1や/todo/2の「1」や「2」のような変数の部分をルートパラメータという
