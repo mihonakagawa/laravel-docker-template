@@ -1,4 +1,6 @@
 <!doctype html>
+<!-- テンプレートエンジン -->
+<!-- あくまでサーバー側でhtmlの書き起こし -->
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
   <meta charset="utf-8">

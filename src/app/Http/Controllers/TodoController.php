@@ -7,6 +7,14 @@ use App\Todo;
 
 class TodoController extends Controller
 {
+    private $todo;
+
+    public function __construct(Todo $todo)
+    {
+        // コンストラクタインジェクション：Todoクラスのインスタンスを生成し、$todoという変数に代入。
+        $this->todo = $todo;
+    }
+
     // 一覧画面の表示
     public function index()
     {
@@ -15,8 +23,10 @@ class TodoController extends Controller
         // todosテーブルのレコードを全件取得
         $todos = $todo->all();
         // dd($todos);
+        // dd($todo); // 
         // allメソッドの返り値：Illuminate\Database\Eloquent\Collectionクラスのインスタンス
         // CollectionインスタンスはLaravelで用意されているクラスで配列操作に特化したクラス
+        // allメソッドなんで定義されてない呼べている？
         
         // view関数で、画面表示したいHTMLを指定
 
@@ -44,26 +54,31 @@ class TodoController extends Controller
         $inputs = $request->all();
 
         // 1. todosテーブルの1レコードを表すTodoクラスをインスタンス化
-        $todo = new Todo();
+        // $todo = new Todo();
         
         // 2. Todoインスタンスのカラム名のプロパティに保存したい値を代入
         // $todo->content = $inputs['content']; // 個別で代入する
-        $todo->fill($inputs); // 一括で代入する
+        // $todo->fill($inputs); // 一括で代入する
+        $this->todo->fill($inputs);
         // dd($todo);
 
         // 3. Todoインスタンスの`->save()`を実行してオブジェクトの状態をDBに保存するINSERT文を実行
-        $todo->save();
+        $this->todo->save();
 
         // 一覧画面を表示
         return redirect()->route('todo.index');
+        // redirect() でリダイレクトインスタンス作成
+        // route()メソッドでサーバーへリクエスト
+        // つまり、web.phpに遷移
     }
 
     // 詳細画面の表示
     public function show($id)
     {
-        $model = new Todo();
         // find()メソッド：指定のIDのデータを取得
-        $todo = $model->find($id);
+        // $model = new Todo();
+        // $todo = $model->find($id);
+        $todo = $this->todo->find($id);
 
         // 詳細画面を表示
         return view('todo.show', ['todo' => $todo]);

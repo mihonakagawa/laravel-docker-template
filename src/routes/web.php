@@ -17,12 +17,26 @@
 // ルート定義とは？
 // URIとHTTPメソッドの組み合わせで実行する処理を指定すること。
 
+// Laravelは、Serverで動く言語。
+// ユーザーがクライアントから送信したリクエストを、Webサーバーが受け取り、
+// Webサーバーが送信したリクエストをアプリケーションサーバーが受け取り、
+// アプリケーションサーバーから送信したリクエストをDBサーバーが受け取る
+// Laravelは、アプリケーションサーバーで動いている。
+
 Route::get('/', function () {
     return view('welcome');
 });
 
 // 一覧画面の表示のルート
 Route::get('/todo', 'TodoController@index')->name('todo.index');
+
+// Restful： リソースに対して何をするかによってURL名とHTTPリクエストの組み合わせで表す概念
+// Controller：リクエストとレスポンスを扱う
+// UI→サーバーへリクエスト→(Routeで振り分け)→受け取り先
+// Modelとのやりとりはどこで？
+// MVCS S:サービス
+// MVCSR　R：リポジトリ
+
 
 // 新規作成画面の表示のルート
 Route::get('/todo/create', 'TodoController@create')->name('todo.create');
