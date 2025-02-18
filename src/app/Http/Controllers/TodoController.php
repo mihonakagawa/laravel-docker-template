@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+// use Illuminate\Http\Request;
+use App\Http\Requests\TodoRequest; // TodoRequestが継承しているFormRequestは、Illuminate\Http\Requestを継承している。
 use App\Todo;
 
 class TodoController extends Controller
@@ -43,7 +44,7 @@ class TodoController extends Controller
     }
 
     // 新規作成の処理
-    public function store(Request $request)
+    public function store(TodoRequest $request)
     {
         // フォームから送信されたデータを個別で取得
         // $content = $request->input('content');
@@ -94,7 +95,7 @@ class TodoController extends Controller
         return view('todo.edit', ['todo' => $todo]);
     }
 
-    public function update(Request $request, $id) // 第1引数: リクエスト情報の取得　第2引数: ルートパラメータの取得
+    public function update(TodoRequest $request, $id) // 第1引数: リクエスト情報の取得　第2引数: ルートパラメータの取得
     {
         // リクエストされた値を取得
         // $inputs = $request->request; // こちらだとobject型となり、array型での取得ができない。
