@@ -83,4 +83,13 @@ class TodoController extends Controller
         // 詳細画面を表示
         return view('todo.show', ['todo' => $todo]);
     }
+
+    // 編集画面の表示
+    public function edit($routeParam)
+    {
+        // 編集対象のレコードの情報を持つTodoモデルのインスタンスを取得
+        $todo = $this->todo->find($routeParam);
+        // dd($todo);
+        return view('todo.edit', ['todo' => $todo]);
+    }
 }

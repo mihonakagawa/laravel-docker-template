@@ -51,3 +51,8 @@ Route::post('/todo', 'TodoController@store')->name('todo.store');
 Route::get('/todo/{id}', 'TodoController@show')->name('todo.show');
 // {id}の部分は、変数を読み込んでいる。
 // /todo/1や/todo/2の「1」や「2」のような変数の部分をルートパラメータという
+// bladeファイルからRoute関数の第二引数で渡されたルートパラメータを{id}などど読み込むことで、
+// Controllerの関数にルートパラメータを渡すことができる。
+
+// 更新用の画面のルート
+Route::get('/todo/{id}/edit', 'TodoController@edit')->name('todo.edit');
