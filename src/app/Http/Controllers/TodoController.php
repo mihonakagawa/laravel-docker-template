@@ -87,9 +87,31 @@ class TodoController extends Controller
     // 編集画面の表示
     public function edit($routeParam)
     {
+        // $routeParamにはroute/web.phpから渡ってきたルートパラメータ・つまりIDが入っている
         // 編集対象のレコードの情報を持つTodoモデルのインスタンスを取得
         $todo = $this->todo->find($routeParam);
         // dd($todo);
         return view('todo.edit', ['todo' => $todo]);
+    }
+
+    public function update(Request $request, $id) // 第1引数: リクエスト情報の取得　第2引数: ルートパラメータの取得
+    {
+        // リクエストされた値を取得
+        // $inputs = $request->request; // こちらだとobject型となり、array型での取得ができない。
+        $inputs = $request->all(); // フォームから送信されたデータを一括でarray型で取得
+        // dd($inputs);・
+        // name属性が"_method"のvalueをPUTとしてリクエスト送信をしたことが確認できる。
+
+        // 1. 更新対象のレコードを表すTodoインスタンスを取得
+        $todo = $this->todo->find($id);
+
+        // 2. Todoインスタンスの->fill()を実行して更新したい値を代入
+        $todo->fill($inputs);
+
+        // 3. Todoインスタンスの->save()を実行してオブジェクトの状態をDBに保存するUPDATE文を実行
+        $todo->save();
+
+        // リダイレクトインスタンス->routeメソッドで詳細画面表示ルートを指定
+        return redirect()->route('todo.show', $todo->id);
     }
 }

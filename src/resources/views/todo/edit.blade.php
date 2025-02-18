@@ -5,8 +5,13 @@
     <div class="card">
       <div class="card-header">ToDo編集</div>
       <div class="card-body">
-        <form method="POST" action="">
+        <form method="POST" action="{{ route('todo.update', $todo->id) }}">
+          <!-- action属性で指定したルートにリクエストが送信 -->
           @csrf
+          @method('PUT')
+          <!-- 以下と同等。HTMLの仕様で、<form method="PUT">のようにPUTメソッドを指定することができない。 -->
+          <!-- <input type="hidden" name="_method" value="PUT"> -->
+          <!-- name属性が_methodのデータが送信されてきた場合、Laravelはその時の、value属性の値をHTTPメソッドとして解釈 -->
           <div class="form-group row">
             <label for="name" class="col-md-4 col-form-label text-md-right">ToDo入力</label>
             <div class="col-md-6">

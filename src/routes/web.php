@@ -54,5 +54,10 @@ Route::get('/todo/{id}', 'TodoController@show')->name('todo.show');
 // bladeファイルからRoute関数の第二引数で渡されたルートパラメータを{id}などど読み込むことで、
 // Controllerの関数にルートパラメータを渡すことができる。
 
-// 更新用の画面のルート
+// 編集画面の表示のルート
 Route::get('/todo/{id}/edit', 'TodoController@edit')->name('todo.edit');
+
+// 更新処理のルート
+// 特定のToDo（/todo/{id}）に対して更新（put()）を行うルート
+Route::put('/todo/{id}', 'TodoController@update')->name('todo.update');
+// /todo/{id}は何で決まるのか？
