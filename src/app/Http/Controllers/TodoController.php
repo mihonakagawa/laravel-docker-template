@@ -115,4 +115,20 @@ class TodoController extends Controller
         // リダイレクトインスタンス->routeメソッドで詳細画面表示ルートを指定
         return redirect()->route('todo.show', $todo->id);
     }
+
+    // 削除処理
+    public function delete($id)
+    {
+        // $inputs = $request->all();
+        // dd($inputs);
+
+        // 1. 削除対象のレコードの情報を持つTodoモデルのインスタンスを取得
+        $todo = $this->todo->find($id);
+
+        // 2. 取得したTodoモデルのdeleteメソッドを実行
+        $todo->delete();
+
+        // 一覧画面へ
+        return redirect()->route('todo.index');
+    }
 }

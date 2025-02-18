@@ -61,3 +61,6 @@ Route::get('/todo/{id}/edit', 'TodoController@edit')->name('todo.edit');
 // 特定のToDo（/todo/{id}）に対して更新（put()）を行うルート
 Route::put('/todo/{id}', 'TodoController@update')->name('todo.update');
 // /todo/{id}は何で決まるのか？
+
+// 削除処理のルート
+Route::delete('/todo/{id}', 'TodoController@delete')->name('todo.delete');
